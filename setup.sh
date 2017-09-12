@@ -4,6 +4,7 @@ then
     echo "$geo_data already exist."
 else
     cd src
+    #wget -M http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
     curl -O http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
     gzip -d GeoLiteCity.dat.gz
     cd ..
