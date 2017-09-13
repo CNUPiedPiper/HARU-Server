@@ -10,6 +10,14 @@ import types
 from builder import modelbuilder
 from sentence2vec import sentence2vec
 import configparser
+from flask import Flask
+
+app = Flask('Main')
+
+@app.route('/order/<order>/')
+def answer_request(order):
+    print(order)
+    return Main.main_flow(Main(), order)
 
 # Haru Server main class.
 class Main:
@@ -63,12 +71,12 @@ class Main:
         naver_secret = self.config.get('NAVER', 'secret')
 
 
-    def main_flow(self):
+    def main_flow(self, order):
         print('[HARU] In Main flow..')
 
-        #sentence = post받는 영역
+        sentence = order
         
-        sentence = u'오늘 날씨는 어때'
+        #sentence = u'오늘 날씨는 어때'
         #sentence = u'오늘 이슈는 뭐야'
         #sentence = u'지금 몇시야'
         #sentence = u'이 노래가 뭐지'
@@ -83,11 +91,14 @@ class Main:
         print(answer_text)
         
         # Call run funciton again.
-        self.run()
-
+        #self.run()
+        return answer_text
+    
+    
     def run(self):
-        # Detecting wake-up word.
-        self.main_flow()
+        # Wait request from interface.
+        app.run(host='0.0.0.0')
+        
 
 if __name__ == "__main__":
     print('[HARU] Starting the HARU Server')
