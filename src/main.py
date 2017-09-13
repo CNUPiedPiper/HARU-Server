@@ -10,14 +10,23 @@ import types
 from builder import modelbuilder
 from sentence2vec import sentence2vec
 import configparser
-from flask import Flask
+from flask import Flask, request
+import json
 
 app = Flask('Main')
 
-@app.route('/order/<order>/')
-def answer_request(order):
-    print(order)
-    return Main.main_flow(Main(), order)
+@app.route('/request',  methods=['POST'])
+def answer_request():
+    if request.method == 'POST':
+        order = request.form[u'sentence']
+        print("Sentence : " + order)
+        text, ans_num = Main.main_flow(Main(), order)
+        data = {
+            "function_number" : ans_num,
+            "answer" : text
+        }
+        print data
+        return json.dumps(data)
 
 # Haru Server main class.
 class Main:
@@ -86,13 +95,10 @@ class Main:
         print('[HARU] Getting the result text from API')
         
         # Run app function
-        #anwer_text interface로 보냄
+        # Send anwer_text to interface
         answer_text = self.response[response_number](None)
-        print(answer_text)
-        
-        # Call run funciton again.
-        #self.run()
-        return answer_text
+        print answer_text
+        return answer_text, response_number
     
     
     def run(self):
