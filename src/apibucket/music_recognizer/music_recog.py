@@ -57,5 +57,5 @@ def get_music_title(host, key, secret):
     #     text = "음악을 찾을 수 없습니다."
 
     # print("[HARU] {result}".format(result=text))
-    text = "temp"
+    text = "노래를 들려주세요"
     return text

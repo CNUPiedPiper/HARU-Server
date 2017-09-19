@@ -35,5 +35,4 @@ def get_weather(w_key, lat, lon, m_key, city, time=0):
 
     text = text + mise.get_mise(m_key, city)
 	
-    print(text)
     return text

@@ -19,8 +19,10 @@ app = Flask('Main')
 def answer_request():
     if request.method == 'POST':
         order = request.form[u'sentence']
-        print("Sentence : " + order)
+        print("[HARU]Sentence : " + order)
+
         text, ans_num = Main.main_flow(Main(), order)
+
         data = {
             "function_number" : ans_num,
             "answer" : text
@@ -45,7 +47,11 @@ class Main:
 
         def classify(self, input_sentence):
             # Convert input_sentence to vector using sentecne2vec.
-            input_vector = np.array(self.s2v.sentence2vec(input_sentence))
+            result = self.s2v.sentence2vec(input_sentence)
+            words_vec = result[0]
+            words_raw = result[1]
+
+            input_vector = np.array(words_vec)
             
             result = np.array([])
             model_number = 1
@@ -64,10 +70,10 @@ class Main:
             
             # No answer in model
             if result[max_index] < 0.5:
-                return 0
+                return 0, words_raw
             # Return argmax index
             else:
-                return max_index + 1
+                return max_index + 1, words_raw
 
     def __init__(self):
         self.classifier = self.Classifier()
@@ -89,14 +95,18 @@ class Main:
         #sentence = u'오늘 이슈는 뭐야'
         #sentence = u'지금 몇시야'
         #sentence = u'이 노래가 뭐지'
+        #sentence = u'네이버가 뭐야'
+        #sentence = u'윤동주가 누구야'
+        #sentence = u'런던 검색해줘'
+        # sentence = u'가시두더지를 찾아줘'
         
         # Get classified number from user's order sentence.
-        response_number = self.classifier.classify(sentence)
+        response_number, words = self.classifier.classify(sentence)
         print('[HARU] Getting the result text from API')
         
         # Run app function
         # Send anwer_text to interface
-        answer_text = self.response[response_number](None)
+        answer_text = self.response[response_number](words)
         print answer_text
         return answer_text, response_number
     
@@ -104,6 +114,9 @@ class Main:
     def run(self):
         # Wait request from interface.
         app.run(host='0.0.0.0')
+        #self.main_flow(None)
+        #import time
+        #time.sleep(3)
         
 
 if __name__ == "__main__":
