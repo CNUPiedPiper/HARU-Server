@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-from apibucket import weather, issue, geoip, wiki
+from apibucket import weather, issue, geoip, wiki, date
 from apibucket.music_recognizer import music_recog
 import datetime
 import configparser
@@ -12,8 +12,8 @@ def function0(words):
     return u'적절한 응답을 찾을 수 없습니다'
 
 def function1(words):
-    # nouns = [word[:-5] for word in words if re.findall(r"\w+", word)[0] == u'Noun']
-    # print (nouns)
+    #nouns = [re.findall(ur"[가-힣\w]+", word)[0] for word in words if re.findall(r"\w+", word)[1] == u'Noun']
+    #print (nouns)
     w_key = config.get('WEATHER', 'key')
     m_key = config.get('MISE', 'key')
     geo = geoip.Geoip().get_geo()
@@ -35,3 +35,6 @@ def function4(words):
 def function5(words):
     title = [word[:-5] for word in words if re.findall(r"\w+", word)[0] == u'Noun'][0]
     return wiki.get_wiki(title)
+
+def function6(words):
+    return date.get_date()
