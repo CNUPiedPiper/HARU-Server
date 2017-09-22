@@ -48,3 +48,15 @@ host = "YOUR 'https://www.acrcloud.com/' host"
 key = "YOUR 'https://www.acrcloud.com/' key"
 secret = "YOUR 'https://www.acrcloud.com/' secret"
 ```
+
+
+## wiki.py
+단어에 대한 위키백과의 검색 결과를 얻을 수 있는 모듈입니다.<br>
+
+It is a module that can get the Wikipedia search results for words.
+
+
+## date.py
+오늘의 날짜를 얻을 수 있는 모듈입니다.<br>
+
+It is a module that can get today's date.
