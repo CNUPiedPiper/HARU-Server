@@ -92,6 +92,7 @@ class Main:
         sentence = order
         
         #sentence = u'오늘 날씨가 어때'
+        sentence = u'내일 날씨가 어때'
         #sentence = u'오늘 이슈는 뭐야'
         #sentence = u'지금 몇시야'
         #sentence = u'이 노래가 뭐지'
@@ -100,7 +101,7 @@ class Main:
         #sentence = u'런던 검색해줘'
         #sentence = u'가시두더지를 찾아줘'
         #sentence = u'딱풀이 뭐야'
-        sentence = u'오늘이 무슨 요일이야'
+        #sentence = u'오늘이 무슨 요일이야'
         
         # Get classified number from user's order sentence.
         response_number, words = self.classifier.classify(sentence)
