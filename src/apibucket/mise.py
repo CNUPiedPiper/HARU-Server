@@ -12,7 +12,8 @@ def get_mise(my_key, city):
     convert_dust_level = {u'1':u'좋음',u'2':u'보통',u'3':u'나쁨',u'4':u'매우나쁨'}
     apiKey = my_key
     url = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"
-    sidoName = convert_cityname[city]
+    sidoName = city
+    # sidoName = convert_cityname[city]
     pageNo = "1"
     numOfRows = "10"
     version = "1.3"
@@ -31,6 +32,13 @@ def get_mise(my_key, city):
     data = urllib2.urlopen(url, params).read()
     data = json.loads(data)
     
-    text = "또한 미세먼지 농도는 {val} 이고, 상태는 {level}입니다.".format(city=sidoName, val=data["list"][1]["pm10Value"], level=convert_dust_level[data["list"][1]["pm10Grade"]])
+    try :
+        text = "또한 미세먼지 농도는 {val} 이고, 상태는 {level}입니다.".format(city=sidoName, val=data["list"][1]["pm10Value"], level=convert_dust_level[data["list"][1]["pm10Grade"]])
+    except KeyError as ke :
+        print("KeyError in mise.py")
+        text = ""
+    except IndexError as ie :
+        print("IndexError in mise.py")
+        text = ""
 
     return text

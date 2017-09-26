@@ -7,7 +7,7 @@ import mise
 sky_dict = {'SKY_D01': "맑은 날씨", 'SKY_D02': '구름이 조금 있는 날씨', 'SKY_D03': '구름이 많은 날씨', 'SKY_D04': '흐린 날씨', 'SKY_D05': '비가 오는 날씨', 'SKY_D06': '눈이 오는 날씨', 'SKY_D07': '비 또는 눈이 오는 날씨'}
 tomorrow_sky_dict = {'SKY_M01': "맑은 날씨", 'SKY_M02': '구름이 조금 있는 날씨', 'SKY_M03': '구름이 많은 날씨', 'SKY_M04': '흐린 날씨', 'SKY_M05': '비가 오는 날씨', 'SKY_M06': '눈이 오는 날씨', 'SKY_M07': '비 또는 눈이 오는 날씨'}
 
-def get_weather(w_key, lat, lon, m_key, city, time=0):
+def get_weather(w_key, lat, lon, m_key, city, sido, time=0):
     params = {"version":"1","lat":lat,"lon":lon}
 
     key = {"appKey":w_key}
@@ -29,10 +29,10 @@ def get_weather(w_key, lat, lon, m_key, city, time=0):
     tomorrow_tmin = result['weather']['summary'][0]['tomorrow']['temperature']['tmin']
 
     if time == 0:
-        text = "현재 온도는 {temp} 도 이고, 오늘의 최고 기온은 {tmax} 도, 최저 지온은 {tmin} 도 이며, {sky}입니다. ".format(temp=temperature, tmax=tmax, tmin=tmin, sky=sky_dict[sky_code])
+        text = "현재 {city}의 온도는 {temp} 도 이고, 오늘의 최고 기온은 {tmax} 도, 최저 지온은 {tmin} 도 이며, {sky}입니다. ".format(city=city, temp=temperature, tmax=tmax, tmin=tmin, sky=sky_dict[sky_code])
     else:
-        text = "내일의 최고 기온은 {tmax} 도, 최저 지온은 {tmin} 도 이며, {sky}가 예상됩니다. ".format(tmax=tomorrow_tmax, tmin=tomorrow_tmin, sky=tomorrow_sky_dict[tomorrow_sky_code])
+        text = "내일 {city}의 최고 기온은 {tmax} 도, 최저 지온은 {tmin} 도 이며, {sky}가 예상됩니다. ".format(city=city,tmax=tomorrow_tmax, tmin=tomorrow_tmin, sky=tomorrow_sky_dict[tomorrow_sky_code])
 
-    text = text + mise.get_mise(m_key, city)
+    text = text + mise.get_mise(m_key, sido)
 	
     return text

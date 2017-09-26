@@ -5,27 +5,60 @@ from sentence2vec import word2vec
 import datetime
 import configparser
 import re
+from geopy.geocoders import Nominatim
+import geopy
 
 config = configparser.RawConfigParser()
 config.read('config.ini')
+geolocator = Nominatim()
 
 def function0(words):
     return u'적절한 응답을 찾을 수 없습니다'
 
 def function1(words):
+    sido = [u'서울',u'서울시',u'부산',u'부산시',u'대구',u'대구시',u'인천',u'인천시',u'광주',u'광주시',u'울산',u'울산시',u'세종',u'세종시']
     #nouns = [re.findall(r"[가-힣\w]+", word)[0] for word in words if re.findall(r"[가-힣\w]+", word)[1] == u'Noun']
     #print (unicode(words))
     w_key = config.get('WEATHER', 'key')
     m_key = config.get('MISE', 'key')
     geo = geoip.Geoip().get_geo()
+    location = []
+    location.append(geo[0])
+    location.append(geo[1])
+    location.append(geo[2])
     w2v = word2vec.Word2Vec()
     day = 0
-    #day = [1 for noun in words if w2v.model.wv.similarity(unicode(noun), u'내일/Noun') >= 0.9]
+
+    error = 0
+
     for word in words:
         if w2v.model.wv.similarity(unicode(word),u'내일/Noun') >= 0.9 : 
             day = 1
-    #print (w2v.model.wv.similarity(u'오늘/Noun', u'내일/Noun'))
-    return weather.get_weather(w_key, geo[1], geo[2], m_key, geo[0], day)
+        elif w2v.model.wv.similarity(unicode(word),u'지역/Noun') >= 0.1 \
+        and w2v.model.wv.similarity(unicode(word),u'날씨/Noun') <= 0.7 \
+        and w2v.model.wv.similarity(unicode(word),u'지역/Noun') <= 0.7:
+            if word == '시/Noun' :
+                continue
+            city = unicode(word[:-5])
+            try :
+                geo_city = geolocator.geocode(city, timeout=10)
+            except geopy.exc.GeocoderTimedOut :
+                try :
+                    geo_city = geolocator.geocode(city, timeout=20)
+                except geopy.exc.GeocoderTimedOut :
+                    return "적절한 지역을 찾지 못했습니다. 다시 한번 검색해주세요"
+            
+            try : 
+                location[0] = city[:2]
+                sido.index(city)
+            except ValueError:
+                location[0] = geo_city.address[-8:-6]
+            
+            location[1] = geo_city.latitude
+            location[2] = geo_city.longitude
+            print(location[0])
+
+    return weather.get_weather(w_key, location[1], location[2], m_key, city, location[0], day)
 
 def function2(words):
     return u"좋은 아침 입니다. " + issue.get_issue()

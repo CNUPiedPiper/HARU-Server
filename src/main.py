@@ -92,7 +92,7 @@ class Main:
         sentence = order
         
         #sentence = u'오늘 날씨가 어때'
-        sentence = u'내일 날씨가 어때'
+        sentence = u'내일 천안 날씨가 어때'
         #sentence = u'오늘 이슈는 뭐야'
         #sentence = u'지금 몇시야'
         #sentence = u'이 노래가 뭐지'

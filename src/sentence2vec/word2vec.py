@@ -5,7 +5,7 @@ import os.path
 
 class Word2Vec:
     def __init__(self):
-        self.model = gensim.models.Word2Vec.load(''.join([os.path.dirname(__file__), '/res/model']))
+       self.model = gensim.models.Word2Vec.load(''.join([os.path.dirname(__file__), '/res/model']))
 
     def word2vec(self, word):
         if isinstance(word, list):
