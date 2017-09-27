@@ -15,6 +15,7 @@ import json
 
 app = Flask('Main')
 
+# Wait rest api from HARU Interface
 @app.route('/request',  methods=['POST'])
 def answer_request():
     if request.method == 'POST':
@@ -91,17 +92,17 @@ class Main:
 
         sentence = order
         
-        #sentence = u'오늘 날씨가 어때'
-        sentence = u'내일 천안 날씨가 어때'
-        #sentence = u'오늘 이슈는 뭐야'
-        #sentence = u'지금 몇시야'
-        #sentence = u'이 노래가 뭐지'
-        #sentence = u'네이버가 뭐야'
-        #sentence = u'윤동주가 누구야'
-        #sentence = u'런던 검색해줘'
-        #sentence = u'가시두더지를 찾아줘'
-        #sentence = u'딱풀이 뭐야'
-        #sentence = u'오늘이 무슨 요일이야'
+        # sentence = u'오늘 날씨가 어때'
+        # sentence = u'내일 천안 날씨가 어때'
+        # sentence = u'오늘 이슈는 뭐야'
+        # sentence = u'지금 몇시야'
+        # sentence = u'이 노래가 뭐지'
+        # sentence = u'네이버가 뭐야'
+        # sentence = u'윤동주가 누구야'
+        # sentence = u'런던 검색해줘'
+        # sentence = u'가시두더지를 찾아줘'
+        # sentence = u'딱풀이 뭐야'
+        # sentence = u'오늘이 무슨 요일이야'
         
         # Get classified number from user's order sentence.
         response_number, words = self.classifier.classify(sentence)
@@ -116,10 +117,11 @@ class Main:
     
     def run(self):
         # Wait request from interface.
-        #app.run(host='0.0.0.0')
-        self.main_flow(None)
-        import time
-        time.sleep(3)
+        app.run(host='0.0.0.0')
+
+        # self.main_flow(None)
+        # import time
+        # time.sleep(3)
         
 
 if __name__ == "__main__":
