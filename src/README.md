@@ -11,8 +11,8 @@ Haru(Humanic Awareness and Response Unit)
 
 ## Getting started
 
-다음과 같이 [main.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/main.py) 를 실행합니다.</br>
-Then run [main.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/main.py) as follows.
+다음과 같이 [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) 를 실행합니다.</br>
+Then run [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) as follows.
 ``` bash
 $ sudo python main.py
 ```
@@ -22,8 +22,8 @@ $ sudo python main.py
 If you want to add your own skills, proceed as follows.</br>
 
 
-처음에는 [functions.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/functions.py) 에 다음과 같이 원하는 번호와 그에 맞는 함수를 구현합니다.</br>
-First, Implement the desired number and function as follows In [functions.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/functions.py)
+처음에는 [functions.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/functions.py) 에 다음과 같이 원하는 번호와 그에 맞는 함수를 구현합니다.</br>
+First, Implement the desired number and function as follows In [functions.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/functions.py)
 
 ``` python
 def function3(words):
@@ -31,15 +31,15 @@ def function3(words):
     return u'지금은 {h}시 {m}분 입니다.'.format(h=now.hour, m=now.minute)
 ```
 
-다른 라이브러리를 사용해 추가적으로 구현할 필요가 있는 함수는 [apibucket](https://github.com/CNUPiedPiper/HARU/tree/master/src/apibucket) 디렉토리에서 모듈 형태로 구현한 뒤 이를 [functions.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/functions.py) 에서 추가시켜 사용합니다.</br>
-If you have any functions that needs to be implemented using another library, you can implement it as a module in the [apibucket](https://github.com/CNUPiedPiper/HARU/tree/master/src/apibucket) directory and add it in [functions.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/functions.py).
+다른 라이브러리를 사용해 추가적으로 구현할 필요가 있는 함수는 [apibucket](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/apibucket) 디렉토리에서 모듈 형태로 구현한 뒤 이를 [functions.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/functions.py) 에서 추가시켜 사용합니다.</br>
+If you have any functions that needs to be implemented using another library, you can implement it as a module in the [apibucket](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/apibucket) directory and add it in [functions.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/functions.py).
 ``` python
 from apibucket import weather, issue, geoip
 from apibucket.music_recognizer import music_recog
 ```
 
-두번째로는 [/trainer/res](https://github.com/CNUPiedPiper/HARU/tree/master/src/trainer/res) 에 분류되고 싶은 문장들을 각각의 모델 번호가 주어진 파일에 다음과 같이 넣어줍니다. 동작함수의 번호와 문장 예시 파일의 번호는 서로 일치하여야 합니다. </br>
-Second, Put the sentences that you want to be classified in [/trainer/res](https://github.com/CNUPiedPiper/HARU/tree/master/src/trainer/res) into the given file of each model number as follows. The number of the operation function and the number of the sentence example file must match each other.
+두번째로는 [/trainer/res](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/trainer/res) 에 분류되고 싶은 문장들을 각각의 모델 번호가 주어진 파일에 다음과 같이 넣어줍니다. 동작함수의 번호와 문장 예시 파일의 번호는 서로 일치하여야 합니다. </br>
+Second, Put the sentences that you want to be classified in [/trainer/res](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/trainer/res) into the given file of each model number as follows. The number of the operation function and the number of the sentence example file must match each other.
 
 ``` 
 # In model3 file.
@@ -52,8 +52,8 @@ Second, Put the sentences that you want to be classified in [/trainer/res](https
 ```
 
 
-마지막으로, 훈련 시키고 싶은 Model 번호와 훈련 횟수를 인자로 넘겨서 [train_runner.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/train_runner.py) 를 실행시킵니다.</br>
-Finally, run [train_runner.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/train_runner.py) with the model number and the number of training that you want to train as follows.
+마지막으로, 훈련 시키고 싶은 Model 번호와 훈련 횟수를 인자로 넘겨서 [train_runner.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner.py) 를 실행시킵니다.</br>
+Finally, run [train_runner.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner.py) with the model number and the number of training that you want to train as follows.
 ``` bash
 # In src directory.
 $ python train_runner.py model_number iteration_number
