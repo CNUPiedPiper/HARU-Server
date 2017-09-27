@@ -71,6 +71,6 @@ $ python train_runner.py 3 100
 - [/sentence2vec](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/sentence2vec) - 사용자의 명령 텍스트를 벡터값으로 변환시키는 모듈의 디렉토리 입니다. </br>
 - [/trainer](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/trainer) - RNN모델을 훈련하는 모듈의 디렉토리 입니다. </br>
 - [functions.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/functions.py) - HARU가 할 수 있는 기능들을 구현한 모듈 파일입니다</br>
-- [train_runner.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner.py) - [traner.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/trainer/trainer.py)모듈을 [main.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/main.py)에서 실행시키는 파일입니다. </br>
+- [train_runner.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner.py) - [traner.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/trainer/trainer.py)모듈을 [src](https://github.com/CNUPiedPiper/HARU/blob/master/src) 디렉토리에서 실행시키는 파일입니다. </br>
 - [config.ini](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/config.ini) - api key를 저장하여 사용하는 파일입니다. </br>
 - [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) - HARU를 실행하는 파일입니다. </br>
