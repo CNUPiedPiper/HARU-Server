@@ -59,7 +59,7 @@ $ . venv/bin/activate
 Install set up shell. It is compatible with Python 2.X.
     
 ```
-$ sudo sh ./setup.sh
+$ sh ./setup.sh
 ```
 
 ## This is our demo video !
