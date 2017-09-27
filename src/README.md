@@ -17,7 +17,7 @@ First, write a [config.ini](https://github.com/CNUPiedPiper/HARU-Server/blob/mas
 그 후, 다음과 같이 [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) 를 실행합니다.</br>
 Then run [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) as follows.
 ``` bash
-$ sudo python main.py
+$ python main.py
 ```
 
 ## Plug-in Interface
