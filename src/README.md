@@ -11,7 +11,10 @@ Haru(Humanic Awareness and Response Unit)
 
 ## Getting started
 
-다음과 같이 [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) 를 실행합니다.</br>
+먼저, api 모듈을 사용하기 위해 [config.ini](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/config.ini) 파일을 작성합니다.</br>
+First, write a [config.ini](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/config.ini) to use the api module.
+
+그 후, 다음과 같이 [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) 를 실행합니다.</br>
 Then run [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) as follows.
 ``` bash
 $ sudo python main.py
