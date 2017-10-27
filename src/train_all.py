@@ -9,7 +9,6 @@ if __name__ == '__main__':
         print '$python trainer.py model_number iteration_number'
         exit()
 
-    for i in range(2,int(sys.argv[1])+1):
-        print i
+    for i in range(1,int(sys.argv[1])+1):
         t = trainer.Trainer()
         t.training(str(i), int(sys.argv[2]))
