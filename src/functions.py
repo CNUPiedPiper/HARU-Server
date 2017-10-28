@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-from apibucket import weather, issue, geoip, wiki, date
+from apibucket import weather, issue, geoip, wiki, date, word_play
 from apibucket.music_recognizer import music_recog
 from sentence2vec import word2vec
 import datetime
@@ -28,6 +28,7 @@ def function1(words):
     location.append(geo[2])
     w2v = word2vec.Word2Vec()
     day = 0
+    city = u'이곳'
 
     error = 0
 
@@ -46,7 +47,7 @@ def function1(words):
                 try :
                     geo_city = geolocator.geocode(city, timeout=20)
                 except geopy.exc.GeocoderTimedOut :
-                    return "적절한 지역을 찾지 못했습니다. 다시 한번 검색해주세요"
+                    return u"적절한 지역을 찾지 못했습니다. 다시 한번 검색해주세요"
             
             try : 
                 location[0] = city[:2]
@@ -79,3 +80,6 @@ def function5(words):
 
 def function6(words):
     return date.get_date()
+
+def function7(word):
+    return word_play.get_word_play()

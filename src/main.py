@@ -92,17 +92,34 @@ class Main:
 
         sentence = order
         
-        # sentence = u'오늘 날씨가 어때'
-        # sentence = u'내일 천안 날씨가 어때'
-        # sentence = u'오늘 이슈는 뭐야'
-        # sentence = u'지금 몇시야'
-        # sentence = u'이 노래가 뭐지'
-        # sentence = u'네이버가 뭐야'
-        # sentence = u'윤동주가 누구야'
-        # sentence = u'런던 검색해줘'
-        # sentence = u'가시두더지를 찾아줘'
-        # sentence = u'딱풀이 뭐야'
-        # sentence = u'오늘이 무슨 요일이야'
+        sentence = u'오늘 날씨가 어때'
+        sentence = u'지금 부산 날씨가 어때'
+        sentence = u'내일 서초구 날씨가 어때'
+        sentence = u'오늘 광주 날씨가 어때'
+        sentence = u'내일 날씨 어때'
+        sentence = u'내일 날씨 뭐야'
+        sentence = u'오늘 이슈가 뭐야'
+        sentence = u'오늘 이슈는 뭐야'
+        sentence = u'지금 몇시야'
+        sentence = u'좋은 아침이야'
+        sentence = u'지금 시간 알려줘'
+        sentence = u'현재 시간'
+        sentence = u'현재 몇시지'
+        sentence = u'지금 몇시니'
+        sentence = u'시간'
+        sentence = u'이 노래가 뭐지'
+        sentence = u'이 노래를 알려줘'
+        sentence = u'네이버가 뭐야'
+        sentence = u'구글 검색해줘'
+        sentence = u'윤동주가 누구야'
+        sentence = u'런던 검색해줘'
+        sentence = u'가시두더지를 찾아줘'
+        sentence = u'딱풀이 뭐야'
+        sentence = u'오늘이 무슨 요일이야'
+        sentence = u'오늘 몇 요일이지'
+        sentence = u'끝말잇기 하고 싶어'
+        sentence = u'끝말잇기 게임 할래'
+        sentence = u'프라하 찾아줄래'
         
         # Get classified number from user's order sentence.
         response_number, words = self.classifier.classify(sentence)
@@ -117,11 +134,11 @@ class Main:
     
     def run(self):
         # Wait request from interface.
-        app.run(host='0.0.0.0')
+        # app.run(host='0.0.0.0')
 
-        # self.main_flow(None)
-        # import time
-        # time.sleep(3)
+        self.main_flow(None)
+        import time
+        time.sleep(3)
         
 
 if __name__ == "__main__":

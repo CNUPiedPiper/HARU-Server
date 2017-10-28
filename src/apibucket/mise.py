@@ -40,5 +40,11 @@ def get_mise(my_key, city):
     except IndexError as ie :
         print("IndexError in mise.py")
         text = ""
+    except HTTPError :
+        print("HTTPError in mise.py")
+        text = ""
+    except urllib2.HTTPError :
+        print("HTTPError in mise.py")
+        text = ""
 
     return text
