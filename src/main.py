@@ -92,6 +92,8 @@ class Main:
 
         sentence = order
         
+        # sentence = u'오늘 날씨가 어때'
+      
         # Get classified number from user's order sentence.
         response_number, words = self.classifier.classify(sentence)
         print('[HARU] Getting the result text from API')
@@ -107,6 +109,9 @@ class Main:
         # Wait request from interface.
         app.run(host='0.0.0.0')
 
+        # self.main_flow(None)
+        # import time
+        # time.sleep(3)
         
 
 if __name__ == "__main__":

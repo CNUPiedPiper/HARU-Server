@@ -29,7 +29,11 @@ def get_mise(my_key, city):
    
     params = params+"&ServiceKey="+apiKey
 
-    data = urllib2.urlopen(url, params).read()
+    try:
+        data = urllib2.urlopen(url, params).read()
+    except:
+        print("urllib2.HTTPError in mise.py")
+        return ""
     data = json.loads(data)
     
     try :
@@ -43,8 +47,7 @@ def get_mise(my_key, city):
     except HTTPError :
         print("HTTPError in mise.py")
         text = ""
-    except urllib2.HTTPError :
-        print("HTTPError in mise.py")
+    except:
         text = ""
 
     return text
