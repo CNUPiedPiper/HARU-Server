@@ -7,7 +7,7 @@ Haru(Humanic Awareness and Response Unit)
 
 ## Server Version
 [![GitHub version](https://badge.fury.io/gh/boennemann%2Fbadges.svg)](http://badge.fury.io/gh/boennemann%2Fbadges)
-[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](https://opensource.org/licenses/GPL-3.0/)
 
 ## Getting started
 
@@ -63,6 +63,15 @@ $ python train_runner.py model_number iteration_number
 $ python train_runner.py 3 100
 ```
 
+
+만약, 처음부터 입력하는 Model 번호까지 훈련을 시켜주고 싶다면 [train_runner_all.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner_all.py) 를 실행시킵니다. </br>
+If you want to train from the first model until model that you want, run [train_runner_all.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner_all.py) with the model number and the number of training that you want to train as follows.
+``` bash
+# In src directory.
+$ python train_runner_all.py model_number iteration_number
+$ python train_runner_all.py 3 100
+```
+
 ## Structure
 
 - [/apibucket](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/apibucket) - [functions.py](https://github.com/CNUPiedPiper/HARU/blob/master/src/functions.py) 에서 사용할 수 있는 모듈들의 디렉토리입니다. </br>
@@ -72,5 +81,6 @@ $ python train_runner.py 3 100
 - [/trainer](https://github.com/CNUPiedPiper/HARU-Server/tree/master/src/trainer) - RNN모델을 훈련하는 모듈의 디렉토리 입니다. </br>
 - [functions.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/functions.py) - HARU가 할 수 있는 기능들을 구현한 모듈 파일입니다</br>
 - [train_runner.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner.py) - [traner.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/trainer/trainer.py)모듈을 [src](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src) 디렉토리에서 실행시키는 파일입니다. </br>
+- [train_runner_all.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner_all.py) - [train_runner.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/train_runner.py)모듈을 처음 모델부터 입력 모델 까지 실행시키는 파일입니다. </br>
 - [config.ini](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/config.ini) - api key를 저장하여 사용하는 파일입니다. </br>
 - [main.py](https://github.com/CNUPiedPiper/HARU-Server/blob/master/src/main.py) - HARU를 실행하는 파일입니다. </br>
