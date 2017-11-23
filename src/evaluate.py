@@ -61,10 +61,23 @@ class Test(unittest.TestCase):
         self.eval_set.close()
 
     def test_classify(self):
+        error = 0
         for sentence, label in self.examples:
             print('\ninput : ' + sentence)
             print('label : ' + label)
-            self.assertEqual(self.classifier.classify(sentence)[0], int(label[0]))
+            try: 
+                result = self.classifier.classify(sentence)[0]
+                self.assertEqual(result, int(label[0]))
+            except:
+                print("-------------------------------")
+                print("fail")
+                print("\ninput : " + sentence)
+                print("expected label : " + label)
+                print("result : " + str(result))
+                print("-------------------------------")
+                error += 1
+        print("\n\n======================================================================")
+        print("error : " + str(error))
 
 if __name__ == '__main__':
     unittest.main()
