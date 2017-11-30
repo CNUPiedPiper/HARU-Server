@@ -86,3 +86,6 @@ def function6(words):
 
 def function7(word):
     return word_play.get_word_play()
+
+def function8(word):
+    return u"저는 점점 똑똑해지는, 인공지능 스피커, 하루 입니다."
